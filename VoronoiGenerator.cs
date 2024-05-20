@@ -46,23 +46,6 @@ public class VoronoiGenerator : MonoBehaviour
             tex.SetPixel(seed.x, seed.y, colors[Random.Range(0, colors.Length)]);
         }
 
-        foreach(Vector2Int pixel in pixels)
-        {
-            float dist = float.MaxValue;
-            Vector2Int seedCoords = seeds[0];
-
-            foreach(Vector2Int seed in seeds)
-            {
-                if(Vector2.Distance(pixel, seed) < dist)
-                {
-                    dist = Vector2.Distance(pixel, seed);
-                    seedCoords = seed;
-                }
-            }
-
-            tex.SetPixel(pixel.x, pixel.y, tex.GetPixel(seedCoords.x, seedCoords.y));
-        }
-
         tex.Apply();
     }
 }
